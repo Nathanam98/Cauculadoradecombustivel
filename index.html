@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Consumo de Combustível</title>
+    <!-- Referencie o arquivo CSS externo (mesma pasta) -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-lvfEzZiO3/Ff2rDlMP7dHjsl9fouzqgA3bN2tgLQf267FfFp5DxPr6PAFnb1xSxS" crossorigin="anonymous">
+
+    <!-- Adicione o link do Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <video id="background-video" autoplay muted loop>
+        <source src="videofundo/videofundo.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
+    <div id="container">
+        <div id="calculator">
+            <header>
+                <div id="logo-container">
+                    <img src="logo/logo1.png" alt="AmTech">
+                </div>
+                <h2>Calculadora de Consumo de Combustível</h2>
+            </header>
+
+            <main>
+                <label for="fuelTankCapacity">Capacidade do tanque de combustível (em KM):</label>
+                <input type="number" id="fuelTankCapacity" placeholder="Informe a capacidade do tanque" required>
+
+                <label for="distance">Distância que irá percorrer em km por dia:</label>
+                <input type="number" id="distance" placeholder="Informe a distância" required>
+
+                <label for="consumption">Consumo do veículo por litro:</label>
+                <input type="number" id="consumption" placeholder="Informe o consumo por litro" required>
+
+                <label for="fuelPrice">Preço do combustível (ex: 4.15):</label>
+                <input type="number" id="fuelPrice" step="0.01" placeholder="Informe o preço do combustível" required>
+
+                <button onclick="calcularCustoTotal()">Calcular Custo Total</button>
+
+                <h3 id="resultado" class="mensagem-sucesso"></h3>
+
+                <!-- Novos elementos para a capacidade do tanque e tanques necessários -->
+                <div id="tanque-info">
+                    <p>Capacidade do tanque: <span id="info-capacidade"></span> litros</p>
+                    <p>Tanques necessários para a viagem: <span id="info-tanques"></span></p>
+                </div>
+
+
+
+                <!-- Elemento canvas para renderizar o gráfico -->
+                <canvas id="graficoCustoMensal" width="100%" height="50"></canvas>
+            </main>
+
+            <!-- Adicione os botões de compartilhamento e limpeza dentro da div 'footer' -->
+<footer id="footer">
+    <p>Siga-me nas redes sociais:
+        <a class="social-link" href="https://www.instagram.com/nathanalvesmelo__/" target="_blank">
+            <img src="icones/instagram.png" alt="Instagram">
+            Instagram
+        </a> |
+        <a class="social-link" href="https://www.linkedin.com/in/nathan-alves-13923a158/" target="_blank">
+            <img src="icones/link.png" alt="LinkedIn">
+            LinkedIn
+        </a>
+    </p>
+    <p>Desenvolvido por Nathan Alves | Contato WhatsApp: <a href="https://wa.me/5547999760826" target="_blank">+55
+            47 99976-0826</a></p>
+
+    <!-- Elementos adicionados para informações de doação -->
+    <section id="donation-info">
+        <h3>Contribua para o desenvolvimento desta calculadora!</h3>
+        <p>Se esta calculadora foi útil para você, considere fazer uma doação para apoiar o desenvolvedor.
+        </p>
+        <!-- Substitua o caminho abaixo pelo caminho real da sua imagem do QR Code Pix -->
+        <img src="logo/pix-nathan.jpg" alt="pix-nathan" id="qrcode" width="160">
+        <button onclick="copiarNumeroPix()">Copiar</button>
+        <p>Chave Pix: <strong id="chavePix">47992569591</strong> Inter</p>
+    </section>
+</footer>
+
+
+
+                <!-- Botões de compartilhamento e limpeza -->
+                <!-- Adicione o botão de compartilhamento oculto no final do seu footer -->
+                <button id="compartilhar" onclick="compartilharResultado()" style="display: none;">Compartilhar
+                    Resultado</button>
+            </footer>
+        </div>
+    </div>
+
+
+
+
+    <!-- Referencie o arquivo JavaScript externo (mesma pasta) -->
+    <script src="script.js"></script>
+</body>
+
+</html>
